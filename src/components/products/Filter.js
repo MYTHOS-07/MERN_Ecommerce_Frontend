@@ -51,7 +51,7 @@ const ProductsFilter = () => {
   }
 
   return (
-    <aside className="shadow-md py-8 px-6 rounded-xl">
+    <aside className="shadow-md py-8 px-6 rounded-xl bg-white dark:bg-gray-800">
       <h3 className="font-semibold text-xl">Product Filter</h3>
 
       {/* Search */}

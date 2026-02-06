@@ -239,7 +239,6 @@ Example:
 ## Global State Management (Redux)
 
 ### Core Concepts
-
 #### Store
 - Stores application state
 - Single source of truth
