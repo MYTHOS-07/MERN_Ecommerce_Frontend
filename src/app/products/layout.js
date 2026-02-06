@@ -3,12 +3,10 @@ import React from "react";
 
 const ProductsLayout = ({ children }) => {
   return (
-    <div>
+    <section className="py-10">
       <ProductsBanner />
-      <section className="py-16">
-        <div className="container mx-auto px-6">{children}</div>
-      </section>
-    </div>
+      <div className="container mx-auto px-6">{children}</div>
+    </section>
   );
 };
 

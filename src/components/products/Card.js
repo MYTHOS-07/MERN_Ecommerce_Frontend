@@ -15,7 +15,7 @@ const ProductCard = ({ _id, name, price, brand, category, imageUrls }) => {
           alt={name}
           className="w-full h-48 object-cover"
         />
-        <span class="absolute top-3 right-3 bg-green-700 text-white text-xs font-medium px-2 py-1 rounded-xl">
+        <span className="absolute top-3 right-3 bg-teal-700 text-white text-xs font-medium px-2 py-1 rounded-xl">
           {brand}
         </span>
       </Link>
@@ -28,7 +28,7 @@ const ProductCard = ({ _id, name, price, brand, category, imageUrls }) => {
             {name}
           </Link>
         </h4>
-        <span class="bg-primary/10 text-primary text-xs font-medium px-1.5 py-0.5 rounded">
+        <span className="bg-primary/10 text-primary text-xs font-medium px-1.5 py-0.5 rounded">
           {category}
           <span className="text-sm ml-2 text-gray-500 dark:">(259)</span>
         </span>

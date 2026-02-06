@@ -5,13 +5,13 @@ import banner from "@/assets/images/product-banner.jpg";
 
 const ProductsBanner = () => {
   return (
-    <section className="py-10 ">
+    <section className="pb-8 ">
       <div className="container mx-auto px-6">
         <div className="relative overflow-hidden text-white  px-10 bg-linear-to-r from-primary/50 to-secondary/50 w-full h-52 rounded-2xl shadow-sm">
           <Image
             height={600}
             width={900}
-            src={banner}
+            src={banner ?? ""}
             alt="product-banner-img"
             className="w-full absolute left-0 bottom-0 -z-1"
           />

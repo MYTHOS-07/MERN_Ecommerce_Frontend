@@ -227,6 +227,7 @@ Example:
 ---
 
 ## HTTP Requests
+- Hypertext transfer protocol
 - **GET** → Fetch data (Read)
 - **POST** → Create data
 - **PUT** → Update data
