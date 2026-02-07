@@ -14,3 +14,19 @@ export const getProducts = async (searchParams) => {
     console.log(e);
   }
 };
+
+export const addProduct = async (data) => {
+  const authToken = localStorage.getItem("authToken");
+
+  try {
+    const response = await axios.post(`${config.apiUrl}/api/products`, data, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
