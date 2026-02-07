@@ -1,6 +1,7 @@
-import React from "react";
-import { FaImage } from "react-icons/fa";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { FaImage } from "react-icons/fa";
+import React from "react";
+import ProductsFilter from "@/components/products/Filter";
 
 const LoadingCard = () => {
   return (
@@ -29,16 +30,19 @@ const LoadingCard = () => {
 
 const ProductsLoading = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      <LoadingCard />
-      <LoadingCard />
-      <LoadingCard />
-      <LoadingCard />
-      <LoadingCard />
-      <LoadingCard />
-      <LoadingCard />
-      <LoadingCard />
-    </div>
+    <section className="grid grid-cols-1  md:grid-cols-[1fr_2fr] lg:grid-cols-[1fr_4fr] gap-8">
+      <ProductsFilter />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <LoadingCard />
+        <LoadingCard />
+        <LoadingCard />
+        <LoadingCard />
+        <LoadingCard />
+        <LoadingCard />
+        <LoadingCard />
+        <LoadingCard />
+      </div>
+    </section>
   );
 };
 

@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import config from "@/config/config";
 import AppProvider from "@/redux/provider";
 import MainLayout from "@/layouts/MainLayout";
+import { ToastContainer } from "react-toastify";
 
 export const metadata = {
   title: config.appName,
@@ -17,8 +18,11 @@ export default function RootLayout({ children }) {
         <AppProvider>
           <MainLayout>
             <Header />
-            <main className="min-h-screen dark:bg-gray-900 dark:text-white"> {children}</main>
+            <main className="min-h-screen dark:bg-gray-900 dark:text-white">
+              {children}
+            </main>
             <Footer />
+            <ToastContainer position="top-right" autoClose="2500" />
           </MainLayout>
         </AppProvider>
       </body>

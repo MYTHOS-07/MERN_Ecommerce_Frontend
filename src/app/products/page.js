@@ -1,9 +1,7 @@
-import { getProducts } from "@/api/products";
 import ProductCard from "@/components/products/Card";
 import ProductsFilter from "@/components/products/Filter";
-import config from "@/config/config";
-import axios from "axios";
 import React from "react";
+import { getProducts } from "@/api/products";
 
 export const metadata = {
   title: "Products | Techno",
@@ -14,9 +12,9 @@ const ProductsPage = async ({ searchParams }) => {
   const products = await getProducts(searchParams);
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-[1fr_4fr] gap-8">
+    <section className="grid grid-cols-1  md:grid-cols-[1fr_2fr] lg:grid-cols-[1fr_4fr] gap-8">
       <ProductsFilter />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {products?.map((product) => (
           <ProductCard
             key={product._id}

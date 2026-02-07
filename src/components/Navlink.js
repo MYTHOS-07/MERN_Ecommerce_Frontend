@@ -1,11 +1,12 @@
 "use client";
-import navLinks from "@/constants/navlinks";
-import { HOME_ROUTE } from "@/constants/routes";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
 
-const Navlink = () => {
+import Link from "next/link";
+import React from "react";
+import navLinks from "@/constants/navLinks";
+import { HOME_ROUTE } from "@/constants/routes";
+import { usePathname } from "next/navigation";
+
+const NavLink = () => {
   const pathname = usePathname();
   return (
     <nav className="hidden md:flex gap-5">
@@ -28,4 +29,4 @@ const Navlink = () => {
   );
 };
 
-export default Navlink;
+export default NavLink;

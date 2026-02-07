@@ -1,30 +1,33 @@
 "use client";
-import { login } from "@/api/auth";
-import Logo from "@/components/Logo";
-import { REGISTER_ROUTE } from "@/constants/routes";
+
 import Link from "next/link";
-import React from "react";
+import Logo from "@/components/Logo";
+import React, { useEffect } from "react";
+import Spinner from "@/components/Spinner";
+import PasswordInput from "@/components/form/passwordInput";
+import { REGISTER_ROUTE } from "@/constants/routes";
+import { loginUser } from "@/redux/auth/authActions";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
 
   async function submitForm(data) {
-    try {
-      const response = await login(data);
-
-      const token = response.token;
-      localStorage.setItem("authToken", token);
-
-      console.log(response);
-      console.log("success");
-    } catch (error) {
-      console.log(error.response.data);
-    }
+    dispatch(loginUser(data));
   }
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error, { autoClose: 1000 });
+    }
+  }, [error]);
+
   return (
-    <div className="flex items-center justify-center md:w-lg px-4 py-10 bg-white dark:bg-slate-800 rounded-2xl m-auto md:mx-30 md:my-20">
+    <div className="flex items-center justify-center md:w-lg px-4 py-10 bg-white dark:bg-slate-800 rounded-2xl mt-30 md:m-auto md:mx-30 md:my-20 ">
       <div className="flex w-full flex-col max-w-96 gap-5">
         {/* logo */}
         <Logo className="text-2xl" />
@@ -46,20 +49,15 @@ const LoginPage = () => {
           </div>
           <div className="mt-3">
             <label className="font-medium">Password</label>
-            <input
-              placeholder="Enter your password"
-              className="mt-2 rounded-md ring ring-gray-200 focus:ring-2 focus:ring-primary outline-none px-3 py-3 w-full"
-              required
-              type="password"
-              name="password"
-              {...register("password")}
-            />
+            <PasswordInput {...register("password")} />
           </div>
           <button
             type="submit"
-            className="mt-8 py-3 w-full cursor-pointer rounded-md bg-primary text-white transition hover:bg-primary/80"
+            disabled={loading}
+            className="flex items-center justify-center mt-8 py-3 w-full cursor-pointer rounded-md bg-primary text-white transition hover:bg-primary/80 disabled:opacity-80"
           >
             Login
+            {loading && <Spinner className="h-6 w-6 fill-primary" />}
           </button>
           <p className="text-center py-8">
             Don&apos;t have an account?
