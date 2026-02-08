@@ -6,8 +6,9 @@ import { FaLaptop } from "react-icons/fa";
 const Logo = ({ className = "text-lg" }) => {
   return (
     <h1 className={`font-semibold text-primary ${className}`}>
-      <Link href={HOME_ROUTE} className="flex items-center">
-        <FaLaptop /> Techno
+      <Link href={HOME_ROUTE} className="flex items-center gap-2">
+        <FaLaptop />
+        Techno
       </Link>
     </h1>
   );

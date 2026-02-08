@@ -72,7 +72,7 @@ const ProductsFilter = () => {
         <select
           name="sort"
           id="sort"
-          value={DEFAULT_SORT}
+          value={sort}
           className="border border-gray-300 rounded w-full px-2 py-1"
           onChange={(e) => {
             setSort(e.target.value);
@@ -90,8 +90,8 @@ const ProductsFilter = () => {
           <option value={JSON.stringify({ price: 1 })}>
             Price: Low to High
           </option>
-          <option value={JSON.stringify({ price: 1 })}>Name: A-Z</option>
-          <option value={JSON.stringify({ price: -1 })}>Name: Z-A</option>
+          <option value={JSON.stringify({ name: 1 })}>Name: A-Z</option>
+          <option value={JSON.stringify({ name: -1 })}>Name: Z-A</option>
         </select>
       </div>
 

@@ -4,14 +4,25 @@ import Image from "next/image";
 import React, { useCallback, useState } from "react";
 import Spinner from "@/components/Spinner";
 import { FaPlus, FaTimes } from "react-icons/fa";
-import { addProduct } from "@/api/products";
+import { addProduct, updateProduct } from "@/api/products";
 import { toast } from "react-toastify";
 import { useDropzone } from "react-dropzone";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
-const ProductForm = () => {
-  const { register, handleSubmit } = useForm();
+const ProductForm = ({ product }) => {
+  console.log(product);
+
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      name: product?.name,
+      brand: product?.brand,
+      price: product?.price,
+      stock: product?.stock,
+      category: product?.category,
+    },
+  });
+
   const [selectedImages, setSelectedImages] = useState([]);
   const [imageFiles, setImageFiles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -36,7 +47,7 @@ const ProductForm = () => {
 
   const router = useRouter();
 
-  function submitForm(data) {
+  async function submitForm(data) {
     setLoading(true);
 
     const formData = new FormData();
@@ -55,15 +66,21 @@ const ProductForm = () => {
       imageFiles.map((file) => formData.append("images", file));
     }
 
-    addProduct(formData)
-      .then(() => {
+    try {
+      if (product) {
+        await updateProduct(product._id, formData);
+        toast.success("Product updated Successfully");
+      } else {
+        await addProduct(formData);
         toast.success("Product Created Successfully");
-        router.back();
-      })
-      .catch((error) => {
-        toast.error(error.response?.data);
-      })
-      .finally(() => setLoading(false));
+      }
+      router.back();
+      router.refresh();
+    } catch (error) {
+      toast.error(error.response?.data);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -229,7 +246,7 @@ const ProductForm = () => {
           </label>
           <textarea
             id="description"
-            rows={8}
+            rows={5}
             className="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg dark:bg-gray-700 dark:text-white outline-primary focus:ring-3 focus:ring-primary/50"
             placeholder="Your description here"
             {...register("description")}
@@ -243,7 +260,9 @@ const ProductForm = () => {
         type="submit"
         className="disabled:opacity-80 inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 cursor-pointer"
       >
-        <span className="mr-2">Add product</span>
+        <span className="mr-2">
+          {product ? "Update Product" : "Add product"}
+        </span>
         {loading ? (
           <Spinner className="h-5 w-5 fill-primary" />
         ) : (

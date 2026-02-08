@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useEffect } from "react";
+import SideBar from "@/components/admin/Sidebar";
 import Spinner from "@/components/Spinner";
 import { LOGIN_ROUTE } from "@/constants/routes";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 
-const AdminLayout = ({ children }) => {
+const ClientLayout = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
 
   const router = useRouter();
@@ -18,7 +19,8 @@ const AdminLayout = ({ children }) => {
   if (user)
     return (
       <>
-        <div>{children}</div>
+        <SideBar />
+        <div className="p-6 sm:ml-64">{children}</div>
       </>
     );
 
@@ -29,4 +31,4 @@ const AdminLayout = ({ children }) => {
   );
 };
 
-export default AdminLayout;
+export default ClientLayout;
