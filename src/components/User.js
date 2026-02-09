@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   DASHBOARD_ROUTE,
   LOGIN_ROUTE,
+  ORDER_PAGE_ROUTE,
   PROFILE_ROUTE,
 } from "@/constants/routes";
 
@@ -57,6 +58,12 @@ const User = () => {
                   className="py-1 px-4 text-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-200"
                 >
                   Dashboard
+                </Link>
+                <Link
+                  href={ORDER_PAGE_ROUTE}
+                  className="py-1 px-4 text-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-200"
+                >
+                  Orders
                 </Link>
                 <Link
                   href={PROFILE_ROUTE}

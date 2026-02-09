@@ -6,23 +6,52 @@ import React from "react";
 import { FaArrowRight, FaImage, FaRegHeart } from "react-icons/fa";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { FaXmark } from "react-icons/fa6";
-import { PRODUCTS_ROUTE } from "@/constants/routes";
+import { ORDER_PAGE_ROUTE, PRODUCTS_ROUTE } from "@/constants/routes";
 import {
+  clearCart,
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
 } from "@/redux/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { createOrder } from "@/api/orders"; // Add this import
+import { useRouter } from "next/navigation";
 
 const CartPage = () => {
   const { products, totalPrice } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   function remove(product) {
     if (confirm("Are you sure you want to delete this item from cart")) {
       dispatch(removeFromCart(product));
     }
+  }
+
+  function checkOut() {
+    const orderItems = products.map((product) => ({
+      product: product.id,
+      quantity: product.quantity,
+    }));
+
+    createOrder({
+      orderItems,
+      shippingAddress: user.address,
+      totalPrice: Math.ceil((totalPrice - totalPrice * 0.1) * 1.13),
+    })
+      .then(() => {
+        router.push(ORDER_PAGE_ROUTE);
+
+        toast.success("Order created successfully", {
+          onClose: () => {
+            dispatch(clearCart());
+          },
+        });
+      })
+      .catch((e) => toast.error(e?.response?.data));
   }
 
   return (
@@ -455,12 +484,12 @@ const CartPage = () => {
                   </dl>
                 </div>
 
-                <a
-                  href="#"
+                <button
+                  onClick={checkOut}
                   className="flex w-full items-center justify-center rounded-lg bg-blue-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Proceed to Checkout
-                </a>
+                </button>
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
                     or
