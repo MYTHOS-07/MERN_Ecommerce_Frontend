@@ -5,12 +5,15 @@ import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { logout } from "@/redux/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import defaultUserPng from "@/assets/images/default-user-image.jpg";
 import {
   DASHBOARD_ROUTE,
   LOGIN_ROUTE,
   ORDER_PAGE_ROUTE,
   PROFILE_ROUTE,
 } from "@/constants/routes";
+import { ORDER_STATUS_PENDING } from "@/constants/order";
+import Image from "next/image";
 
 const User = () => {
   const { user } = useSelector((state) => state.auth);
@@ -33,9 +36,15 @@ const User = () => {
     <div className="relative">
       <button
         onClick={() => setShow(true)}
-        className="border-2 rounded-full h-9 min-w-9 flex items-center justify-center text-gray-700 px-2 py-1 dark:text-gray-300 hover:text-primary cursor-pointer"
+        className="h-9 w-9 rounded-full overflow-hidden border-2 border-gray-300 hover:border-primary transition"
       >
-        <FaUser />
+        <Image
+          src={user?.profileImageUrl || defaultUserPng}
+          alt={user.name}
+          width={36}
+          height={36}
+          className="w-full h-full object-cover"
+        />
       </button>
       {show && (
         <>
@@ -60,7 +69,7 @@ const User = () => {
                   Dashboard
                 </Link>
                 <Link
-                  href={ORDER_PAGE_ROUTE}
+                  href={`${ORDER_PAGE_ROUTE}?status=${ORDER_STATUS_PENDING}`}
                   className="py-1 px-4 text-gray-600 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-200"
                 >
                   Orders

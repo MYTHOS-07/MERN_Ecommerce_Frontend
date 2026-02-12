@@ -1,7 +1,7 @@
 import ProductCard from "@/components/products/Card";
 import ProductsFilter from "@/components/products/Filter";
 import React from "react";
-import { getProducts } from "@/api/products";
+import { getBrands, getCategories, getProducts } from "@/api/products";
 
 export const metadata = {
   title: "Products | Techno",
@@ -11,10 +11,14 @@ export const metadata = {
 const ProductsPage = async ({ searchParams }) => {
   const products = await getProducts(await searchParams);
 
+  const brands = await getBrands();
+
+  const categories = await getCategories();
+
   return (
     <section className="grid grid-cols-1  md:grid-cols-[1fr_2fr] lg:grid-cols-[1fr_4fr] gap-8">
-      <ProductsFilter />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <ProductsFilter productBrands={brands} productCategories={categories} />
+      <div className="self-start grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {products?.map((product) => (
           <ProductCard
             key={product._id}

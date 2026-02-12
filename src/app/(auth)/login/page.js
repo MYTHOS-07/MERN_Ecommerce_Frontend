@@ -5,7 +5,7 @@ import Logo from "@/components/Logo";
 import React, { useEffect } from "react";
 import Spinner from "@/components/Spinner";
 import PasswordInput from "@/components/form/passwordInput";
-import { REGISTER_ROUTE } from "@/constants/routes";
+import { FORGOT_PASSWORD_ROUTE, REGISTER_ROUTE } from "@/constants/routes";
 import { loginUser } from "@/redux/auth/authActions";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -51,6 +51,12 @@ const LoginPage = () => {
             <label className="font-medium">Password</label>
             <PasswordInput {...register("password")} />
           </div>
+          <Link
+            href={FORGOT_PASSWORD_ROUTE}
+            className="text-right block p-2 text-primary hover:underline my-2 text-sm"
+          >
+            Forget password
+          </Link>
           <button
             type="submit"
             disabled={loading}

@@ -2,9 +2,10 @@
 
 import React, { useEffect } from "react";
 import Spinner from "@/components/Spinner";
-import { LOGIN_ROUTE } from "@/constants/routes";
+import { DASHBOARD_ROUTE, LOGIN_ROUTE } from "@/constants/routes";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import { ROLE_ADMIN, ROLE_MERCHANT } from "@/constants/roles";
 
 const AdminLayout = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
@@ -13,6 +14,12 @@ const AdminLayout = ({ children }) => {
 
   useEffect(() => {
     if (!user) router.push(LOGIN_ROUTE);
+
+    const adminViewRoles = [ROLE_ADMIN, ROLE_MERCHANT];
+
+    if (!user.roles.some((role) => adminViewRoles.includes(role))) {
+      router.push(DASHBOARD_ROUTE);
+    }
   }, [user, router]);
 
   if (user)

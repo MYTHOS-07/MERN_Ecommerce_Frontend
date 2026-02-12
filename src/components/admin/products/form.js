@@ -11,8 +11,6 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 const ProductForm = ({ product }) => {
-  console.log(product);
-
   const { register, handleSubmit } = useForm({
     defaultValues: {
       name: product?.name,

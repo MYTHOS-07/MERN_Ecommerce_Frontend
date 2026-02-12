@@ -12,13 +12,13 @@ import { confirmPayment, payVaiStripe } from "@/api/orders";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
-
 const CheckoutForm = ({ id, totalPrice }) => {
   const [show, setShow] = useState();
 
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
+  
 
   async function initPaymentViaStripe() {
     try {

@@ -1,27 +1,36 @@
 "use client";
 
-import Link from "next/link";
 import Logo from "@/components/Logo";
 import React, { useState } from "react";
 import Spinner from "@/components/Spinner";
-import { LOGIN_ROUTE } from "@/constants/routes";
-import { forgotPassword } from "@/api/auth";
+
+import { resetPassword } from "@/api/auth";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import PasswordInput from "@/components/form/passwordInput";
+import { useRouter, useSearchParams } from "next/navigation";
+import { LOGIN_ROUTE } from "@/constants/routes";
 
-const ForgetPasswordPage = () => {
+const ResetPasswordPage = () => {
   const { register, handleSubmit, reset } = useForm();
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+
+  const token = searchParams.get("token");
+  const userId = searchParams.get("userId");
+
+  const router = useRouter();
 
   async function submitForm(data) {
     setLoading(true);
-    forgotPassword(data)
+    resetPassword({ password: data.password, userId, token })
       .then(() => {
         reset();
-        toast.success("Reset password link has been sent successfully");
+        toast.success("Password reset successfully");
       })
       .catch(() => {
-        toast.error("Reset password link sending Failed");
+        toast.error("Password reset Failed");
+        router.replace(LOGIN_ROUTE);
       })
       .finally(() => setLoading(false));
   }
@@ -34,40 +43,26 @@ const ForgetPasswordPage = () => {
         {/* Form */}
         <form onSubmit={handleSubmit(submitForm)}>
           <p className="text-base text-gray-900/90">
-            Please Enter your Password to receive reset password link
+            Please enter your new Password
           </p>
-          <div className="mt-5">
-            <label className="font-medium">Email</label>
-            <input
-              placeholder="Enter your email"
-              className="mt-2 rounded-md ring ring-gray-200 focus:ring-2 focus:ring-primary outline-none px-3 py-3 w-full"
-              required
-              type="email"
-              name="email"
-              {...register("email")}
-            />
+
+          <div className="mt-3">
+            <label className="font-medium">Password</label>
+            <PasswordInput {...register("password")} />
           </div>
+
           <button
             type="submit"
             disabled={loading}
             className="flex items-center justify-center mt-8 py-3 w-full cursor-pointer rounded-md bg-primary text-white transition hover:bg-primary/80 disabled:opacity-80"
           >
-            Send reset Password link
+            Reset Password
             {loading && <Spinner className="h-6 w-6 fill-primary" />}
           </button>
-          <p className="text-center py-8">
-            Go back to Login
-            <Link
-              href={LOGIN_ROUTE}
-              className="text-primary hover:underline ml-2"
-            >
-              Login
-            </Link>
-          </p>
         </form>
       </div>
     </div>
   );
 };
 
-export default ForgetPasswordPage;
+export default ResetPasswordPage;

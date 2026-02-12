@@ -114,7 +114,7 @@ const RegisterPage = () => {
             disabled={loading}
             className="flex items-center justify-center mt-8 py-3 w-full cursor-pointer rounded-md bg-primary text-white transition hover:bg-primary/80 disabled:opacity-80"
           >
-            Login
+            Sign In
             {loading && <Spinner className="h-6 w-6 fill-primary" />}
           </button>
           <p className="text-center py-5">
@@ -123,7 +123,7 @@ const RegisterPage = () => {
               href={LOGIN_ROUTE}
               className="text-primary hover:underline ml-2"
             >
-              Sign In
+              Login
             </Link>
           </p>
         </form>

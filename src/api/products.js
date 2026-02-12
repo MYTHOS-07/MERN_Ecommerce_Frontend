@@ -39,3 +39,15 @@ export const deleteProduct = async (id) => {
 
   return response.data;
 };
+
+export const getBrands = async () => {
+  const response = await axios.get(`${config.apiUrl}/api/products/brands`);
+
+  return response.data;
+};
+
+export const getCategories = async () => {
+  const response = await axios.get(`${config.apiUrl}/api/products/categories`);
+
+  return response.data;
+};

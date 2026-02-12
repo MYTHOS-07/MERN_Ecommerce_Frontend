@@ -6,9 +6,15 @@ import sidebarLinks from "@/constants/Sidebar";
 import Link from "next/link";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "@/redux/auth/authSlice";
 
 const SideBar = () => {
   const pathname = usePathname();
+
+  const { user } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -23,23 +29,28 @@ const SideBar = () => {
           </div>
 
           <ul className="space-y-2 font-medium">
-            {sidebarLinks.map((items) => {
-              const isActive = pathname.startsWith(items.route);
+            {sidebarLinks.map((item) => {
+              if (!user.roles.some((role) => item.roles.includes(role))) {
+                return <div key={item.route}></div>;
+              }
+
+              const isActive = pathname.startsWith(item.route);
+
               return (
-                <li key={items.route}>
+                <li key={item.route}>
                   <Link
-                    href={items.route}
+                    href={item.route}
                     className={`flex items-center px-2 py-1.5 rounded-md text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 group ${isActive ? "bg-primary/10 text-primary" : ""}`}
                   >
-                    {items.Icon}
-                    <span className="ms-3">{items.label}</span>
+                    {item.Icon}
+                    <span className="ms-3">{item.label}</span>
                   </Link>
                 </li>
               );
             })}
             <li>
               <button
-                href="#"
+                onClick={() => dispatch(logout())}
                 className="gap-3 flex items-center justify-center px-2 py-1.5 rounded-md w-full bg-red-600 hover:bg-red-700 text-white group"
               >
                 <FaArrowRightFromBracket />

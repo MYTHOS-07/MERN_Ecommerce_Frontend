@@ -8,7 +8,7 @@ const DEFAULT_SORT = JSON.stringify({ createdAt: -1 });
 const DEFAULT_MIN_PRICE = 0;
 const DEFAULT_MAX_PRICE = 10000000;
 
-const ProductsFilter = () => {
+const ProductsFilter = ({ productBrands, productCategories }) => {
   const router = useRouter();
 
   const [name, setName] = useState("");
@@ -127,90 +127,40 @@ const ProductsFilter = () => {
           name="sort"
           id="sort"
           className="border border-gray-300 rounded w-full px-2 py-1"
+          value={category}
           onChange={(e) => {
             setCategory(e.target.value);
           }}
         >
           <option value=" ">Select Category</option>
-          <option value="Smartphones">Smart Phones</option>
-          <option value="Laptops">Laptops</option>
-          <option value="smartwatches">Smart Watches</option>
+          {productCategories?.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
       </div>
 
       {/* Brand */}
       <div className="py-3">
         <h4 className="mb-2">Brands</h4>
-        <div className="flex items-center justify-start gap-2 py-0.5">
-          <input
-            name="Apple"
-            id="Apple"
-            type="checkbox"
-            checked={brands.includes("Apple")}
-            onChange={(e) => {
-              handlerBrandsFilterChange("Apple");
-            }}
-          />
-          <label htmlFor="Apple" className="text-sm text-gray-600">
-            Apple
-          </label>
-        </div>
-        <div className="flex items-center justify-start gap-2 py-0.5">
-          <input
-            name="Samsung"
-            id="Samsung"
-            type="checkbox"
-            checked={brands.includes("Samsung")}
-            onChange={(e) => {
-              handlerBrandsFilterChange("Samsung");
-            }}
-          />
-          <label htmlFor="Samsung" className="text-sm text-gray-600">
-            Samsung
-          </label>
-        </div>
-        <div className="flex items-center justify-start gap-2 py-0.5">
-          <input
-            name="Google"
-            id="Google"
-            type="checkbox"
-            checked={brands.includes("Google")}
-            onChange={(e) => {
-              handlerBrandsFilterChange("Google");
-            }}
-          />
-          <label htmlFor="Google" className="text-sm text-gray-600">
-            Google
-          </label>
-        </div>
-        <div className="flex items-center justify-start gap-2 py-0.5">
-          <input
-            name="Oneplus"
-            id="Oneplus"
-            type="checkbox"
-            checked={brands.includes("Oneplus")}
-            onChange={(e) => {
-              handlerBrandsFilterChange("Oneplus");
-            }}
-          />
-          <label htmlFor="Oneplus" className="text-sm text-gray-600">
-            Oneplus
-          </label>
-        </div>
-        <div className="flex items-center justify-start gap-2 py-0.5">
-          <input
-            name="Nothing"
-            id="Nothing"
-            type="checkbox"
-            checked={brands.includes("Nothing")}
-            onChange={(e) => {
-              handlerBrandsFilterChange("Nothing");
-            }}
-          />
-          <label htmlFor="Nothing" className="text-sm text-gray-600">
-            Nothing
-          </label>
-        </div>
+        {productBrands?.map((brand) => (
+          <div
+            key={brand}
+            className="flex items-center justify-start gap-2 py-0.5"
+          >
+            <input
+              name={brand}
+              id={brand}
+              type="checkbox"
+              checked={brands.includes(brand)}
+              onChange={() => handlerBrandsFilterChange(brand)}
+            />
+            <label htmlFor={brand} className="text-sm text-gray-600">
+              {brand}
+            </label>
+          </div>
+        ))}
       </div>
 
       <div className="py-3 space-y-2">

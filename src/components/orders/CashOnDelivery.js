@@ -14,10 +14,7 @@ const CashOnDelivery = ({ id }) => {
 
           router.push(`?status=${ORDER_STATUS_CONFIRMED}`);
         })
-        .catch((error) => {
-          console.log(error);
-          toast.error("Order update failed.");
-        });
+        .catch(() => toast.error("Order update failed."));
     }
   }
 

@@ -4,7 +4,7 @@ export const PRODUCTS_ROUTE = "/products";
 export const CONTACT_ROUTE = "/contact";
 export const LOGIN_ROUTE = "/login";
 export const REGISTER_ROUTE = "/register";
-export const FORGET_PASSWORD_ROUTE = "/forget-password";
+export const FORGOT_PASSWORD_ROUTE = "/forgot-password";
 export const RESET_PASSWORD_ROUTE = "/reset-password";
 
 export const CART_PAGE_ROUTE = "/cart";

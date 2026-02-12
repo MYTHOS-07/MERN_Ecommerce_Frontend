@@ -6,8 +6,6 @@ import React, { useState } from "react";
 const PasswordInput = ({ placeholder = "Enter your password", ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  console.log(showPassword);
-
   return (
     <div className="relative">
       <input
