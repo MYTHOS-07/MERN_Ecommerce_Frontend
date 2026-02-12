@@ -89,13 +89,22 @@ const RegisterPage = () => {
                 type="text"
                 {...register("city")}
               />
-              <input
-                placeholder="province"
+              <select
+                id="province"
                 className="mt-2 rounded-md ring ring-gray-200 focus:ring-2 focus:ring-primary outline-none px-3 py-3 w-full"
-                required
-                type="text"
                 {...register("province")}
-              />
+              >
+                <option selected className="text-gray-300">
+                  Province
+                </option>
+                <option value="Koshi">Koshi</option>
+                <option value="Bagmati">Bagmati</option>
+                <option value="Gandaki">Gandaki</option>
+                <option value="Madesh">Madesh</option>
+                <option value="Sudur-Pachim">Sudur-Pachim</option>
+                <option value="Lumbini">Lumbini</option>
+                <option value="Karnali">Karnali</option>
+              </select>
             </div>
           </div>
           <div className="mt-4">

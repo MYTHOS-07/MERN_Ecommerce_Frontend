@@ -51,3 +51,9 @@ export const getCategories = async () => {
 
   return response.data;
 };
+
+export const getTotalCount = async () => {
+  const response = await axios.get(`${config.apiUrl}/api/products/total`);
+
+  return response.data;
+};

@@ -1,6 +1,5 @@
 import React from "react";
 import TableHead from "./TableHead";
-import { FaPencilAlt } from "react-icons/fa";
 import { format } from "date-fns";
 import Link from "next/link";
 import { PRODUCTS_ROUTE } from "@/constants/routes";
@@ -25,9 +24,9 @@ const OrdersTable = ({ orders, loading }) => {
           <tbody>
             {orders?.map(
               (order) =>
-                order.orderItems.some((item) => item.product) && (
+                order.orderItems.some((item) => item?.product) && (
                   <tr
-                    key={order._id}
+                    key={order?._id}
                     className="border-b border-gray-300 dark:border-gray-700"
                   >
                     <th
@@ -45,7 +44,7 @@ const OrdersTable = ({ orders, loading }) => {
                           >
                             {item.product?.name}
                           </Link>
-                          (x{item.quantity})
+                          (x{item?.quantity})
                         </p>
                       ))}
                     </td>
@@ -54,36 +53,36 @@ const OrdersTable = ({ orders, loading }) => {
                       <p>
                         Name
                         <span className="text-gray-900 dark:text-gray-100">
-                          {order.user.name}
+                          {order.user?.name}
                         </span>
                       </p>
                       <p>
                         Email
                         <span className="text-gray-900 dark:text-gray-100">
-                          {order.user.email}
+                          {order.user?.email}
                         </span>
                       </p>
                       <p>
                         Phone
                         <span className="text-gray-900 dark:text-gray-100">
-                          {order.user.phone}
+                          {order.user?.phone}
                         </span>
                       </p>
                     </td>
                     <td className="px-4 py-3">
                       <p>
-                        {order.shippingAddress.city},
-                        {order.shippingAddress.province}
+                        {order.shippingAddress?.city},
+                        {order.shippingAddress?.province}
                       </p>
                     </td>
                     <td className="px-4 py-3">
-                      {format(order.createdAt, "dd MMM, yyyy")}
+                      {format(order?.createdAt, "dd MMM, yyyy")}
                     </td>
                     <td className="px-4 py-3">
-                      <OrderStatus status={order.status} />
+                      <OrderStatus status={order?.status} />
                     </td>
                     <td className="px-4 py-3">
-                      <OrderAction id={order._id} status={order.status} />
+                      <OrderAction id={order._id} status={order?.status} />
                     </td>
                   </tr>
                 ),

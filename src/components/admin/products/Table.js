@@ -5,7 +5,7 @@ import React from "react";
 import TableHeader from "@/components/products/TableHeader";
 import { FaImage } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
-import { PRODUCT_MANAGEMENT_ROUTE } from "@/constants/routes";
+import { PRODUCT_MANAGEMENT_ROUTE, PRODUCTS_ROUTE } from "@/constants/routes";
 import { format } from "date-fns";
 
 const ProductsTable = ({ products }) => {
@@ -20,23 +20,25 @@ const ProductsTable = ({ products }) => {
               key={product._id}
               className="border-b border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
-              <th
-                scope="row"
-                className="flex items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                {product.imageUrls?.length > 0 ? (
-                  <Image
-                    height={400}
-                    width={400}
-                    src={product.imageUrls[0]}
-                    alt={product.name}
-                    className="w-8 h-8 mr-3 object-contain"
-                  />
-                ) : (
-                  <FaImage className="w-8 h-8 mr-3 object-contain text-gray-300" />
-                )}
+              <th scope="row" className="text-gray-900  dark:text-white">
+                <Link
+                  href={`${PRODUCTS_ROUTE}/${product._id}`}
+                  className="flex items-center px-4 py-2 whitespace-nowrap font-medium"
+                >
+                  {product.imageUrls?.length > 0 ? (
+                    <Image
+                      height={400}
+                      width={400}
+                      src={product.imageUrls[0]}
+                      alt={product.name}
+                      className="w-8 h-8 mr-3 object-contain"
+                    />
+                  ) : (
+                    <FaImage className="w-8 h-8 mr-3 object-contain text-gray-300" />
+                  )}
 
-                {product.name}
+                  {product.name}
+                </Link>
               </th>
 
               <td className="px-4 py-2">

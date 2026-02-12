@@ -10,6 +10,7 @@ function formatQuery(searchParams) {
   if (searchParams?.max) query += `&max=${searchParams?.max}`;
   if (searchParams?.createdBy) query += `&createdBy=${searchParams?.createdBy}`;
   if (searchParams?.limit) query += `&limit=${searchParams?.limit}`;
+  if (searchParams?.offset) query += `&offset=${searchParams?.offset}`;
 
   return query;
 }

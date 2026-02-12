@@ -3,10 +3,10 @@ import { FaCog } from "react-icons/fa";
 
 const TableHead = () => {
   const headerColumns = [
-    { key: "orderid", label: "  Order ID" },
-    { key: "productDetails", label: " Product Details" },
+    { key: "orderid", label: "Order ID" },
+    { key: "productDetails", label: "Product Details" },
     { key: "totalPrice", label: "Total Price" },
-    { key: "customerDetails", label: " Customer Details" },
+    { key: "customerDetails", label: "Customer Details" },
     { key: "Shipping Address", label: "Shipping Address" },
     { key: "orderDate", label: "Order Date" },
     { key: "status", label: "Status" },
