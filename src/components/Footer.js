@@ -123,13 +123,13 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">We Accept</h4>
             <div className="flex gap-2">
               <div className="bg-white px-2 py-1 rounded">
-                <FaCcVisa className="text-2xl text-blue-800" />
+                <FaCcVisa className="text-2xl text-red-800" />
               </div>
               <div className="bg-white px-2 py-1 rounded">
                 <FaCcMastercard className="text-2xl text-red-600" />
               </div>
               <div className="bg-white px-2 py-1 rounded">
-                <FaCcPaypal className="text-2xl text-blue-600" />
+                <FaCcPaypal className="text-2xl text-red-600" />
               </div>
               <div className="bg-white px-2 py-1 rounded">
                 <FaCcApplePay className="text-2xl text-black" />

@@ -3,8 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #3b82f6;
-  --secondary: #1e40af;
+  --primary: #F44336;
+  --secondary: #C62828;
 }
 
 @font-face {

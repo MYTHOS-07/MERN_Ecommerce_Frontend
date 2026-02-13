@@ -62,7 +62,7 @@ const OrderAction = ({ id, status }) => {
     <>
       <button
         onClick={() => setShow(true)}
-        className="p-2 rounded-md bg-primary hover:bg-blue-700 cursor-pointer text-white"
+        className="p-2 rounded-md bg-primary hover:bg-red-700 cursor-pointer text-white"
       >
         <FaPencilAlt />
       </button>

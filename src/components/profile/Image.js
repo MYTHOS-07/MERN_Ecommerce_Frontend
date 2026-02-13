@@ -89,7 +89,7 @@ const ProfileImage = () => {
         <button
           onClick={updateImage}
           type="submit"
-          className="inline-flex gap-2 items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary rounded-lg focus:ring-4 focus:ring-primary/20 dark:focus:ring-primary hover:bg-blue-800"
+          className="inline-flex gap-2 items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary rounded-lg focus:ring-4 focus:ring-primary/20 dark:focus:ring-primary hover:bg-red-800"
         >
           Update Image
           {loading && <Spinner className="h-6 w-6 fill-primary" />}

@@ -14,7 +14,7 @@ const BestSeller = async () => {
   return (
     <section className="py-12 bg-white dark:bg-gray-800">
       <div className="container mx-auto px-4">
-        <div className="bg-linear-to-r from-blue-500 to-indigo-600 rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-linear-to-r from-red-500 to-black rounded-2xl shadow-xl overflow-hidden">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/2 flex flex-col justify-center p-8 lg:p-12">
               <span className="bg-gray-100 bg-opacity-20 rounded-2xl w-max px-4 py-1 text-xs font-medium text-gray-800">
@@ -23,7 +23,7 @@ const BestSeller = async () => {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 mt-2">
                 {product.name}
               </h2>
-              <p className="text-blue-100 mb-6">
+              <p className="text-red-100 mb-6">
                 {product.description.slice(0, 300)}...
               </p>
               <div className="flex mb-4 items-center">
@@ -42,7 +42,7 @@ const BestSeller = async () => {
                 <span className="text-3xl font-semibold text-white">
                   Rs {product.price}
                 </span>
-                <span className="text-xl text-blue-200 line-through ml-1">
+                <span className="text-xl text-red-200 line-through ml-1">
                   Rs {product.price * 1.2}
                 </span>
                 <span className="bg-red-500 text-white text-sm font-semibold px-2 py-1 rounded">

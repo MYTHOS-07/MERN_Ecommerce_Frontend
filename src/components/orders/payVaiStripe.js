@@ -56,7 +56,7 @@ const CheckoutForm = ({ id, totalPrice }) => {
     <>
       <button
         onClick={() => setShow(true)}
-        className="bg-blue-700 hover:bg-blue-900 text-white rounded-md px-4 py-2 cursor-pointer"
+        className="bg-red-700 hover:bg-red-900 text-white rounded-md px-4 py-2 cursor-pointer"
       >
         Pay via Stripe
       </button>

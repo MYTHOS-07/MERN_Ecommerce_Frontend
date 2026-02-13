@@ -7,7 +7,7 @@ const CTASection = () => {
         <h2 className="text-3xl font-bold text-white mb-4">
           Stay updated with Tech products
         </h2>
-        <p className="text-blue-100 max-w-2xl mx-auto mb-6">
+        <p className="text-red-100 max-w-2xl mx-auto mb-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa iusto
           excepturi fugit aliquid labore exercitationem molestias
         </p>

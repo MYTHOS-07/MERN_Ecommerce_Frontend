@@ -7,7 +7,7 @@ const ProductsBanner = () => {
   return (
     <section className="pb-8 select-none">
       <div className="container mx-auto px-6">
-        <div className="relative overflow-hidden text-white  px-10 bg-linear-to-r from-primary/10 to-secondary/50 w-full h-52 rounded-2xl shadow-sm">
+        <div className="relative overflow-hidden text-white  px-10 bg-linear-to-r from-red-500 to-secondary/50 w-full h-52 rounded-2xl shadow-sm">
           <Image
             height={600}
             width={900}

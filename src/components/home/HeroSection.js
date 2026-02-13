@@ -5,7 +5,7 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="py-12 md:py-24 bg-linear-to-r from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900">
+    <section className="py-12 md:py-24 bg-linear-to-r from-red-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900">
       <div className="container mx-auto px-4">
         {/* Hero content */}
         <div className="flex flex-col md:flex-row items-center gap-5">

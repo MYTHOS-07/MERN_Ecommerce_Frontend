@@ -30,6 +30,9 @@ export const getProductsByID = async (id) => {
 export const updateProduct = async (id, data) => {
   const response = await api.put(`/api/products/${id}`, data);
 
+  console.log(id,data);
+  
+
   return response.data;
 };
 

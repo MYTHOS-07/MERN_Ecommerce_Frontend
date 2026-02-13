@@ -8,7 +8,7 @@ import { FaUpload } from "react-icons/fa";
 import { getProducts } from "@/api/products";
 import { useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
-import { ROLE_MERCHANT } from "@/constants/roles";
+import { ROLE_ADMIN, ROLE_MERCHANT } from "@/constants/roles";
 
 const ProductManagementPage = () => {
   const [products, setProducts] = useState([]);
@@ -29,7 +29,7 @@ const ProductManagementPage = () => {
       offset: PAGE_LIMIT * (currentPage - 1),
     };
 
-    if (user.roles.includes(ROLE_MERCHANT)) {
+    if (!user.roles.includes(ROLE_ADMIN)) {
       filter.createdBy = user._id;
     }
 
@@ -60,7 +60,7 @@ const ProductManagementPage = () => {
           </div>
           <div className="flex flex-col shrink-0 space-y-3 md:flex-row md:items-center lg:justify-end md:space-y-0 md:space-x-3">
             <Link
-              className="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary hover:bg-blue-600  dark:bg-blue-600 dark:hover:bg-blue-700"
+              className="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary hover:bg-red-600  dark:bg-red-600 dark:hover:bg-red-700"
               href="product-management/add"
             >
               Add Product

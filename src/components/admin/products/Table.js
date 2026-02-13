@@ -67,7 +67,7 @@ const ProductsTable = ({ products }) => {
               <td className="flex items-center justify-center gap-2 px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <Link
                   href={`${PRODUCT_MANAGEMENT_ROUTE}/edit/${product._id}`}
-                  className="bg-primary text-white p-2 rounded-lg text-xs hover:bg-blue-700 cursor-pointer"
+                  className="bg-primary text-white p-2 rounded-lg text-xs hover:bg-red-700 cursor-pointer"
                 >
                   <FaPencil />
                 </Link>

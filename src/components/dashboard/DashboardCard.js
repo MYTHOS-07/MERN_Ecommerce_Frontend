@@ -82,9 +82,9 @@ const OrderStats = () => {
             .length
         }
         Icon={
-          <FaShoppingBasket className="text-2xl rounded-full p-3 min-w-12 h-12 bg-blue-100 text-blue-500" />
+          <FaShoppingBasket className="text-2xl rounded-full p-3 min-w-12 h-12 bg-red-100 text-red-500" />
         }
-        className={"text-blue-500"}
+        className={"text-red-500"}
       />
       <DashboardCard
         label={"Shipped Orders"}

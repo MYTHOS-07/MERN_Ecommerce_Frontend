@@ -166,7 +166,7 @@ const ProductsFilter = ({ productBrands, productCategories }) => {
       <div className="py-3 space-y-2">
         <button
           onClick={filterProducts}
-          className="bg-primary text-white px-5 py-1 rounded-md w-full cursor-pointer hover:bg-blue-700 transition duration-300"
+          className="bg-primary text-white px-5 py-1 rounded-md w-full cursor-pointer hover:bg-red-700 transition duration-300"
         >
           Filter Products
         </button>

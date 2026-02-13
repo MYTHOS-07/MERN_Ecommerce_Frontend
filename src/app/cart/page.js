@@ -38,6 +38,8 @@ const CartPage = () => {
       quantity: product.quantity,
     }));
 
+
+
     createOrder({
       orderItems,
       shippingAddress: user.address,
@@ -77,10 +79,10 @@ const CartPage = () => {
                         href={`${PRODUCTS_ROUTE}/${product.id}`}
                         className="shrink-0 md:order-1"
                       >
-                        {product?.imageUrls.length > 0 ? (
+                        {product?.imageUrls?.length > 0 ? (
                           <Image
                             src={product?.imageUrls[0]}
-                            alt={product.name}
+                            alt={product?.name}
                             height={400}
                             width={400}
                             className="h-20 w-20 object-contain"
@@ -215,7 +217,7 @@ const CartPage = () => {
 
                 <button
                   onClick={checkOut}
-                  className="flex w-full items-center justify-center rounded-lg bg-blue-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="flex w-full items-center justify-center rounded-lg bg-red-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-700 dark:focus:ring-red-800"
                 >
                   Proceed to Checkout
                 </button>

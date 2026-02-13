@@ -53,7 +53,7 @@ const OrderCard = ({ order }) => {
         <OrderStatus status={order.status} />
       </div>
       <div className="w-full px-6">
-        {order.orderItems.map((item) => (
+        {order?.orderItems?.map((item) => (
           <div
             key={item._id}
             className="flex flex-col lg:flex-row items-center py-6 border-b border-gray-200 dark:border-gray-600 gap-6 w-full"
@@ -62,8 +62,8 @@ const OrderCard = ({ order }) => {
               <Image
                 width={400}
                 height={400}
-                src={item.product.imageUrls[0]}
-                alt="Premium Watch image"
+                src={item?.product?.imageUrls[0]}
+                alt="Premium-Watch-image"
                 className="aspect-square w-full h-28 rounded-xl object-cover"
               />
             </div>
@@ -72,15 +72,15 @@ const OrderCard = ({ order }) => {
                 <div className="flex items-center">
                   <div>
                     <h2 className="font-semibold text-xl leading-8  mb-3">
-                      {item.product.name}
+                      {item?.product?.name}
                     </h2>
                     <p className="font-normal text-lg leading-8 text-gray-500 mb-3 ">
-                      Brand: {item.product.brand}
+                      Brand: {item?.product?.brand}
                     </p>
                     <div className="flex items-center ">
                       <p className="font-medium text-base leading-7  ">
                         Qty:
-                        <span className="text-gray-500">{item.quantity}</span>
+                        <span className="text-gray-500">{item?.quantity}</span>
                       </p>
                     </div>
                   </div>
@@ -90,7 +90,7 @@ const OrderCard = ({ order }) => {
                     <div className="flex gap-3 lg:block">
                       <p className="font-medium text-sm leading-7 ">price</p>
                       <p className="lg:mt-4 font-medium text-sm leading-7 text-indigo-600">
-                        Rs. {item.product.price}
+                        Rs. {item?.product?.price}
                       </p>
                     </div>
                   </div>
@@ -102,7 +102,7 @@ const OrderCard = ({ order }) => {
                       </p>
                       <p className="font-medium text-base whitespace-nowrap leading-7 lg:mt-3 text-emerald-500">
                         {format(
-                          addDays(new Date(order.createdAt), 7),
+                          addDays(new Date(order?.createdAt), 7),
                           "do MMMM yyyy",
                         )}
                       </p>
@@ -129,14 +129,14 @@ const OrderCard = ({ order }) => {
           {order.status == ORDER_STATUS_PENDING ? (
             <div className="pl-6 py-3 max-lg:text-center flex items-center gap-3">
               <PayViaKhalti id={order._id} />
-              <PayViaStripe id={order._id} totalPrice={order.totalPrice} />
+              <PayViaStripe id={order._id} totalPrice={order?.totalPrice} />
               <CashOnDelivery id={order._id} />
             </div>
           ) : null}
         </div>
         <p className="font-semibold text-lg  py-6 pr-6">
           Total Price:
-          <span className="text-indigo-600"> Rs {order.totalPrice}</span>
+          <span className="text-indigo-600"> Rs {order?.totalPrice}</span>
         </p>
       </div>
     </div>

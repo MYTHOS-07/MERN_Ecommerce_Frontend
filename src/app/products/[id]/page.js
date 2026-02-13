@@ -36,7 +36,7 @@ const ProductByIdPage = async ({ params }) => {
             <ProductDescription description={product?.description} />
           </div>
           <div className="lg:sticky top-20 self-start mt-6 sm:mt-8 lg:mt-0 rounded-lg border-gray-300 bg-gray-50 dark:bg-gray-800 shadow-md p-8">
-            <span className="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary inset-ring inset-ring-blue-400/30">
+            <span className="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary inset-ring inset-ring-red-400/30">
               {product.category}
             </span>
             <h1 className="mt-2 text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">

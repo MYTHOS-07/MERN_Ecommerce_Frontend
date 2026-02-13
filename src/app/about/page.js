@@ -14,7 +14,7 @@ const AboutPage = () => {
       <section className="md:py-16 ">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto px-4">
-            <div className="bg-linear-to-r from-primary/30 to-blue-300 rounded-3xl p-8 md:p-12">
+            <div className="bg-linear-to-r from-primary/30 to-red-300 rounded-3xl p-8 md:p-12">
               <div className="text-center max-w-4xl mx-auto">
                 <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3">
                   We&apos;re on a mission to
@@ -35,7 +35,7 @@ const AboutPage = () => {
 
                 <Link
                   href="#our-story"
-                  className="px-8 py-3 bg-primary hover:bg-blue-600 text-white font-medium rounded-lg"
+                  className="px-8 py-3 bg-primary hover:bg-red-600 text-white font-medium rounded-lg"
                 >
                   Our Story
                 </Link>

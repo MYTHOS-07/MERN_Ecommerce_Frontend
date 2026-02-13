@@ -96,7 +96,7 @@ const ProductForm = ({ product }) => {
             type="text"
             id="name"
             className="bg-gray-50 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:text-white outline-primary focus:ring-3 focus:ring-primary/50"
-            placeholder="Type product name"
+            placeholder="Product name"
             required
             {...register("name")}
           />
@@ -150,7 +150,7 @@ const ProductForm = ({ product }) => {
             type="text"
             id="category"
             className="bg-gray-50 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:text-white outline-primary focus:ring-3 focus:ring-primary/50"
-            placeholder="Samsung"
+            placeholder="Category"
             required
             {...register("category")}
           />
@@ -246,7 +246,7 @@ const ProductForm = ({ product }) => {
             id="description"
             rows={5}
             className="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg dark:bg-gray-700 dark:text-white outline-primary focus:ring-3 focus:ring-primary/50"
-            placeholder="Your description here"
+            placeholder="Product description"
             {...register("description")}
           />
         </div>
@@ -256,7 +256,7 @@ const ProductForm = ({ product }) => {
       <button
         disabled={loading}
         type="submit"
-        className="disabled:opacity-80 inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 cursor-pointer"
+        className="disabled:opacity-80 inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 cursor-pointer"
       >
         <span className="mr-2">
           {product ? "Update Product" : "Add product"}
