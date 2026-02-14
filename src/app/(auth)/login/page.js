@@ -13,17 +13,17 @@ import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();
+
   const dispatch = useDispatch();
+
   const { loading, error } = useSelector((state) => state.auth);
 
-  async function submitForm(data) {
+  function submitForm(data) {
     dispatch(loginUser(data));
   }
 
   useEffect(() => {
-    if (error) {
-      toast.error(error, { autoClose: 1000 });
-    }
+    if (error) toast.error(error);
   }, [error]);
 
   return (
